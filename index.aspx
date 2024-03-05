@@ -21,17 +21,20 @@
             </div>
  
             <%-- Menu / Message --%>
-            <div class="sidenav">
+            <div>
                 
                     <ul>
                         <li>
                             <asp:HyperLink ID="hlHome" NavigateUrl="~/index.aspx" runat="server">Home</asp:HyperLink><br />
                         </li>
                         <li>
-                            <asp:HyperLink ID="hlCompanies" NavigateUrl="~/Companies.aspx" runat="server">Companies</asp:HyperLink><br />
+                            <asp:HyperLink ID="hlControls" NavigateUrl="~/Controls.aspx" runat="server">Controls</asp:HyperLink><br />
                         </li>
                         <li>
-                            <asp:HyperLink ID="hlEmployees" NavigateUrl="~/Employees.aspx" runat="server">Employees</asp:HyperLink><br />
+                            <asp:HyperLink ID="hlHazards" NavigateUrl="~/Hazards.aspx" runat="server">Hazards</asp:HyperLink><br />
+                        </li>
+                                                <li>
+                            <asp:HyperLink ID="hlDepartments" NavigateUrl="~/Departments.aspx" runat="server">Departments</asp:HyperLink><br />
                         </li>
                     </ul>
         </div>

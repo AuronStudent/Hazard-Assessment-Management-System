@@ -33,21 +33,30 @@ namespace Hazard_Assessment_Management_System
         protected global::System.Web.UI.WebControls.HyperLink hlHome;
 
         /// <summary>
-        /// hlCompanies control.
+        /// hlControls control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlCompanies;
+        protected global::System.Web.UI.WebControls.HyperLink hlControls;
 
         /// <summary>
-        /// hlEmployees control.
+        /// hlHazards control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlEmployees;
+        protected global::System.Web.UI.WebControls.HyperLink hlHazards;
+
+        /// <summary>
+        /// hlDepartments control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlDepartments;
     }
 }
