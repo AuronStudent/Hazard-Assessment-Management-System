@@ -67,65 +67,113 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ControlCategory.aspx" />
-    <Content Include="Controls.aspx" />
-    <Content Include="Departments.aspx" />
-    <Content Include="HazardCategory.aspx" />
-    <Content Include="Hazards.aspx" />
-    <Content Include="index.aspx" />
-    <Content Include="main.css" />
-    <Content Include="OH&amp;SForm.aspx" />
+    <Content Include="pages\ControlCategory.aspx" />
+    <Content Include="pages\Controls.aspx" />
+    <Content Include="pages\Departments.aspx" />
+    <Content Include="pages\HazardCategory.aspx" />
+    <Content Include="pages\Hazards.aspx" />
+    <Content Include="pages\index.aspx" />
+    <Content Include="pages\LoginPage.aspx" />
+    <Content Include="pages\main.css" />
+    <Content Include="pages\NewHazard.aspx" />
+    <Content Include="pages\NewControl.aspx" />
+    <Content Include="pages\OHSForm.aspx" />
+    <Content Include="pages\Reports.aspx" />
+    <Content Include="pages\SpecificFormEdit.aspx" />
+    <Content Include="pages\SpecificForm.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControlCategory.aspx.cs">
+    <Compile Include="pages\ControlCategory.aspx.cs">
       <DependentUpon>ControlCategory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ControlCategory.aspx.designer.cs">
+    <Compile Include="pages\ControlCategory.aspx.designer.cs">
       <DependentUpon>ControlCategory.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Controls.aspx.cs">
+    <Compile Include="pages\Controls.aspx.cs">
       <DependentUpon>Controls.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Controls.aspx.designer.cs">
+    <Compile Include="pages\Controls.aspx.designer.cs">
       <DependentUpon>Controls.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Departments.aspx.cs">
+    <Compile Include="pages\Departments.aspx.cs">
       <DependentUpon>Departments.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Departments.aspx.designer.cs">
+    <Compile Include="pages\Departments.aspx.designer.cs">
       <DependentUpon>Departments.aspx</DependentUpon>
     </Compile>
-    <Compile Include="HazardCategory.aspx.cs">
+    <Compile Include="pages\HazardCategory.aspx.cs">
       <DependentUpon>HazardCategory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="HazardCategory.aspx.designer.cs">
+    <Compile Include="pages\HazardCategory.aspx.designer.cs">
       <DependentUpon>HazardCategory.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Hazards.aspx.cs">
+    <Compile Include="pages\Hazards.aspx.cs">
       <DependentUpon>Hazards.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Hazards.aspx.designer.cs">
+    <Compile Include="pages\Hazards.aspx.designer.cs">
       <DependentUpon>Hazards.aspx</DependentUpon>
     </Compile>
-    <Compile Include="index.aspx.cs">
+    <Compile Include="pages\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="index.aspx.designer.cs">
+    <Compile Include="pages\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
-    <Compile Include="OH&amp;SForm.aspx.cs">
-      <DependentUpon>OH&amp;SForm.aspx</DependentUpon>
+    <Compile Include="pages\LoginPage.aspx.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="OH&amp;SForm.aspx.designer.cs">
-      <DependentUpon>OH&amp;SForm.aspx</DependentUpon>
+    <Compile Include="pages\LoginPage.aspx.designer.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\NewHazard.aspx.cs">
+      <DependentUpon>NewHazard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\NewHazard.aspx.designer.cs">
+      <DependentUpon>NewHazard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\NewControl.aspx.cs">
+      <DependentUpon>NewControl.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\NewControl.aspx.designer.cs">
+      <DependentUpon>NewControl.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\OHSForm.aspx.cs">
+      <DependentUpon>OHSForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\OHSForm.aspx.designer.cs">
+      <DependentUpon>OHSForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Reports.aspx.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Reports.aspx.designer.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\SpecificFormEdit.aspx.cs">
+      <DependentUpon>SpecificFormEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\SpecificFormEdit.aspx.designer.cs">
+      <DependentUpon>SpecificFormEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\SpecificForm.aspx.cs">
+      <DependentUpon>SpecificForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\SpecificForm.aspx.designer.cs">
+      <DependentUpon>SpecificForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

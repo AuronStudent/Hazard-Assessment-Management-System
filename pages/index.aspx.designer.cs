@@ -11,7 +11,7 @@ namespace Hazard_Assessment_Management_System
 {
 
 
-    public partial class Hazards
+    public partial class index
     {
 
         /// <summary>
@@ -33,15 +33,6 @@ namespace Hazard_Assessment_Management_System
         protected global::System.Web.UI.WebControls.HyperLink hlHome;
 
         /// <summary>
-        /// hlControls control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlControls;
-
-        /// <summary>
         /// hlHazards control.
         /// </summary>
         /// <remarks>
@@ -51,6 +42,15 @@ namespace Hazard_Assessment_Management_System
         protected global::System.Web.UI.WebControls.HyperLink hlHazards;
 
         /// <summary>
+        /// hlControls control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlControls;
+
+        /// <summary>
         /// hlDepartments control.
         /// </summary>
         /// <remarks>
@@ -58,5 +58,41 @@ namespace Hazard_Assessment_Management_System
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlDepartments;
+
+        /// <summary>
+        /// hlReports control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlReports;
+
+        /// <summary>
+        /// hlLogout control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlLogout;
+
+        /// <summary>
+        /// hlNewForm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlNewForm;
+
+        /// <summary>
+        /// forms control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView forms;
     }
 }

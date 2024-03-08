@@ -11,7 +11,7 @@ namespace Hazard_Assessment_Management_System
 {
 
 
-    public partial class Controls
+    public partial class Departments
     {
 
         /// <summary>
@@ -31,32 +31,5 @@ namespace Hazard_Assessment_Management_System
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlHome;
-
-        /// <summary>
-        /// hlControls control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlControls;
-
-        /// <summary>
-        /// hlHazards control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlHazards;
-
-        /// <summary>
-        /// hlDepartments control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlDepartments;
     }
 }

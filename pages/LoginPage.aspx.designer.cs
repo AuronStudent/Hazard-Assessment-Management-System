@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Hazard_Assessment_Management_System
+namespace Hazard_Assessment_Management_System.pages
 {
 
 
-    public partial class index
+    public partial class LoginPage
     {
 
         /// <summary>
@@ -24,39 +24,39 @@ namespace Hazard_Assessment_Management_System
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// hlHome control.
+        /// username control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlHome;
+        protected global::System.Web.UI.WebControls.TextBox username;
 
         /// <summary>
-        /// hlControls control.
+        /// password control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlControls;
+        protected global::System.Web.UI.WebControls.TextBox password;
 
         /// <summary>
-        /// hlHazards control.
+        /// LoginForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlHazards;
+        protected global::System.Web.UI.WebControls.LinkButton LoginForm;
 
         /// <summary>
-        /// hlDepartments control.
+        /// loginError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlDepartments;
+        protected global::System.Web.UI.WebControls.Label loginError;
     }
 }
