@@ -78,6 +78,33 @@ namespace Hazard_Assessment_Management_System
         protected global::System.Web.UI.WebControls.TextBox task;
 
         /// <summary>
+        /// phTask control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder phTask;
+
+        /// <summary>
+        /// btnAddTask control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddTask;
+
+        /// <summary>
+        /// ddlCatHaz control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCatHaz;
+
+        /// <summary>
         /// ddlHaz control.
         /// </summary>
         /// <remarks>
@@ -123,6 +150,24 @@ namespace Hazard_Assessment_Management_System
         protected global::System.Web.UI.WebControls.TextBox freq;
 
         /// <summary>
+        /// phHaz control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder phHaz;
+
+        /// <summary>
+        /// btnAddHazard control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddHazard;
+
+        /// <summary>
         /// ddlCon control.
         /// </summary>
         /// <remarks>
@@ -139,6 +184,24 @@ namespace Hazard_Assessment_Management_System
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label errorCon;
+
+        /// <summary>
+        /// phCon control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder phCon;
+
+        /// <summary>
+        /// btnAddControl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddControl;
 
         /// <summary>
         /// SubmitForm control.

@@ -10,6 +10,7 @@
 <body>
     <h1>Hazard Assessment Management System</h1>
     <form id="form1" runat="server">
+         <asp:LinkButton style="margin-left:300px;" class="formButton" ID="NewControl" runat="server" Text="New Control" OnClick="btnNewControl_Click" />
                     <%-- Navigation --%>
             <div class="navContainer">
             <div class="sidenav">
@@ -25,12 +26,13 @@
             <div style="margin-top:-550px" class="datatable">
                 
                 <asp:DropDownList ID="ddlControlCategories" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlControlCategories_SelectedIndexChanged">
-                    <asp:ListItem Text="-- Select Control Category --" Value="-1"></asp:ListItem>
+                    <asp:ListItem Text="-- Select Control Category --" Value=""></asp:ListItem>
                 </asp:DropDownList>
             </div>
-            <asp:LinkButton style="margin-left:300px;" class="formButton" ID="NewControl" runat="server" Text="New Control" OnClick="btnNewControl_Click" />
+           
             
-            <div class="datatable" id="EditCategories" runat="server" style="display: none;">
+            <div class="datatable2" id="EditCategories" runat="server" style="display: none;">
+                
                 <!-- Category editing controls will be shown here -->
                 <label for="txtCategoryName">Control Category Name:</label><br />
                 <asp:TextBox ID="txtCategoryName" runat="server" TextMode="MultiLine" Rows="3" Columns="50"></asp:TextBox><br />

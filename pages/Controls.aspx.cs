@@ -22,7 +22,6 @@ namespace Hazard_Assessment_Management_System
 
             // Define your SQL query to retrieve control categories from the database
             string query = "SELECT Con_Cat_ID, Con_Cat_Name FROM ControlCategory";
-
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
@@ -36,6 +35,8 @@ namespace Hazard_Assessment_Management_System
                 ddlControlCategories.DataValueField = "Con_Cat_ID";
                 ddlControlCategories.DataBind();
             }
+            ddlControlCategories.Items.Insert(0, new ListItem("<Select Control Category>", "0"));
+
         }
 
         protected void ddlControlCategories_SelectedIndexChanged(object sender, EventArgs e)
@@ -116,6 +117,7 @@ namespace Hazard_Assessment_Management_System
                 ddlControlsInCategory.Items.Clear();
 
                 // Add each control to the dropdown list
+                
                 while (reader.Read())
                 {
                     ListItem item = new ListItem(reader["Con_Name"].ToString(), reader["Con_ID"].ToString());

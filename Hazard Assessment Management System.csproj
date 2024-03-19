@@ -67,11 +67,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="pages\ControlCategory.aspx" />
     <Content Include="pages\Controls.aspx" />
     <Content Include="pages\Departments.aspx" />
-    <Content Include="pages\HazardCategory.aspx" />
+    <Content Include="pages\EditDept.aspx" />
     <Content Include="pages\Hazards.aspx" />
+    <Content Include="pages\NewDept.aspx" />
+    <Content Include="pages\newHazard.css" />
     <Content Include="pages\index.aspx" />
     <Content Include="pages\LoginPage.aspx" />
     <Content Include="pages\main.css" />
@@ -84,13 +85,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="pages\ControlCategory.aspx.cs">
-      <DependentUpon>ControlCategory.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\ControlCategory.aspx.designer.cs">
-      <DependentUpon>ControlCategory.aspx</DependentUpon>
-    </Compile>
     <Compile Include="pages\Controls.aspx.cs">
       <DependentUpon>Controls.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -105,12 +99,12 @@
     <Compile Include="pages\Departments.aspx.designer.cs">
       <DependentUpon>Departments.aspx</DependentUpon>
     </Compile>
-    <Compile Include="pages\HazardCategory.aspx.cs">
-      <DependentUpon>HazardCategory.aspx</DependentUpon>
+    <Compile Include="pages\EditDept.aspx.cs">
+      <DependentUpon>EditDept.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="pages\HazardCategory.aspx.designer.cs">
-      <DependentUpon>HazardCategory.aspx</DependentUpon>
+    <Compile Include="pages\EditDept.aspx.designer.cs">
+      <DependentUpon>EditDept.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\Hazards.aspx.cs">
       <DependentUpon>Hazards.aspx</DependentUpon>
@@ -132,6 +126,13 @@
     </Compile>
     <Compile Include="pages\LoginPage.aspx.designer.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\NewDept.aspx.cs">
+      <DependentUpon>NewDept.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\NewDept.aspx.designer.cs">
+      <DependentUpon>NewDept.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\NewHazard.aspx.cs">
       <DependentUpon>NewHazard.aspx</DependentUpon>

@@ -6,7 +6,9 @@
 <head runat="server">
 
     <title>Hazard Assessment Management System</title>
+    
     <link rel="stylesheet" href="main.css" />
+    
 
 </head>
 
@@ -34,7 +36,7 @@
             
                 <div class="formDiv">
 
-                    <table>
+                    <table class="formTable">
                         <tr>
                             <td>Assessment Performed By: </td>
                             <td>Date of Assessment</td>
@@ -63,7 +65,7 @@
                         </tr>
                     </table>
                     <br /><br />
-                    <table style="border:2px;border-style:solid;">
+                    <table class="formTable" style ="border:2px;border-style:solid;">
                         <tr>
                             <th>Tasks</th>
                             <th>Hazards</th>
@@ -72,7 +74,7 @@
                             <th>Date Implemented</th>
                         </tr>
                         <tr>
-                            <td><asp:TextBox ID="task" runat="server" ReadOnly="true"/></td>
+                            <td><asp:TextBox ID="task" runat="server" ReadOnly="true" /></td>
                             <td><asp:TextBox ID="hazards" runat="server" ReadOnly="true"/></td>
                             <td><asp:TextBox ID="risk" runat="server" ReadOnly="true"/></td>
                             <td><asp:TextBox ID="controls" runat="server" ReadOnly="true"/></td>

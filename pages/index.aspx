@@ -19,7 +19,8 @@
 </header>
    
     <form id="form1" runat="server">
-        <div class="container">
+       
+                        <asp:HyperLink class="formButton" ID="hlNewForm" NavigateUrl="OHSForm.aspx" runat="server" style="margin-left:300px;">New Form</asp:HyperLink>
             <%-- Navigation --%>
             <div class="navContainer">
             <div class="sidenav">
@@ -31,21 +32,35 @@
                  <asp:HyperLink ID="hlLogout" NavigateUrl="LoginPage.aspx" runat="server">Logout</asp:HyperLink><br />
             </div>
             </div>
-            <asp:HyperLink class="formButton" ID="hlNewForm" NavigateUrl="OHSForm.aspx" runat="server" style="margin-left:300px;">New Form</asp:HyperLink><br />
+
                 <div class="datatable">
+                    <h2>All Forms</h2>
+                    <asp:TextBox ID="SearchTextBox" runat="server" style="width:50%;"></asp:TextBox>
+                    <asp:DropDownList ID="DropDownFilter" runat="server" style="width:30%;">
+                  <asp:ListItem Selected-="Filter By..." Value="Filter By..." />
+                      <asp:ListItem Text="Department" Value="Department" />
+                      <asp:ListItem Text="Control" Value="Control" />
+                     <asp:ListItem Text="Hazard" Value="Hazard" />
+                    </asp:DropDownList>
+                    
+                    <asp:Button ID="srchBtn" runat="server" Text="Search" OnClick="searchBtn_click" />
+                    <asp:Button ID="clearbtn" runat="server" Text="Clear Search" OnClick="clearBtn_click" />
+                <asp:GridView ID="SearchResultsGrid" runat="server" ShowHeader="False" DataKeyNames="Form_ID" CellSpacing="5" class="formDataTable"></asp:GridView>
                     
                     <!--Makes a data table with each form in it-->
-                 <asp:GridView onrowcommand="Forms_RowCommand" ID="forms" runat="server" ShowHeader="False" DataKeyNames="Form_ID">
+                 <asp:GridView onrowcommand="Forms_RowCommand" ID="forms" runat="server" ShowHeader="False" DataKeyNames="Form_ID" CellSpacing="5" class="formDataTable">
                      <Columns>
                 <asp:TemplateField HeaderText="Actions">
                         <ItemTemplate>
-                            <asp:Button ID="viewbtn" runat="server"  Text="View" CommandName="VIEW" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"/>
+                          
 
+                            <asp:Button ID="viewbtn" runat="server"  Text="View" CommandName="VIEW" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"/>
+                            
                         </ItemTemplate>
                     </asp:TemplateField></Columns>
                  </asp:GridView>
                     </div>
-       </div>
+       
     </form>
 </body>
 </html>

@@ -34,7 +34,7 @@
             
                 <div class="formDiv">
 
-                    <table>
+                    <table class="formTable">
                         <tr>
                             <td>Assessment Performed By: </td>
                             <td>Date of Assessment</td>
@@ -63,7 +63,7 @@
                         </tr>
                     </table>
                     <br /><br />
-                    <table style="border:2px;border-style:solid;">
+                    <table class="formTable"  style="border:2px;border-style:solid;">
                         <tr>
                             <th>Tasks</th>
                             <th>Hazards</th>

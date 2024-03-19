@@ -6,6 +6,7 @@
 <head runat="server">
     <title></title>
     <link rel="stylesheet" href="main.css" />
+    
 </head>
 <body>
     <form id="form1" runat="server">
@@ -27,11 +28,13 @@
 
         Job/Worksite/Work Type <br /><asp:TextBox ID="jobsite" runat="server"  /> <br /> 
         Task <br /><asp:TextBox ID="task" runat="server"  /> <br /> 
-        <button>Add Another Task +</button> <!---TODO not functional--->
+        <asp:PlaceHolder ID="phTask" runat="server" /> <br />
+        <asp:button ID="btnAddTask" runat="server" OnClick="btnAddTask_Click" Text="Add Another Task "></asp:button> <!---TODO not functional--->
         <hr />
         <h2>Hazard Information</h2>
         <hr />
-
+Hazard Category <br />
+        <asp:DropDownList ID="ddlCatHaz" runat="server" AppendDataBoundItems="true" > </asp:DropDownList> <br />
          Hazard <br /> <asp:DropDownList ID="ddlHaz" runat="server" AppendDataBoundItems="true">
              
             </asp:DropDownList> <asp:Label runat="server" ID="errorHaz" Text=""></asp:Label><br />
@@ -40,7 +43,8 @@
         Likelihood   <asp:TextBox ID="like" runat="server"  />  <br />
         Severity     <asp:TextBox ID="sev" runat="server"  />  <br />
         Frequency     <asp:TextBox ID="freq" runat="server"  /> <br />
-        <button>Add Another Hazard +</button><br /> <!---TODO not functional--->
+        <asp:PlaceHolder ID="phHaz" runat="server" /> <br />
+        <asp:button ID="btnAddHazard" runat="server" OnClick="btnAddHazard_Click" Text="Add Another Hazard ">   </asp:button><br /> <!---TODO not functional--->
         <hr />
         <h2>Control Information</h2>
         <hr />
@@ -48,8 +52,9 @@
             Control <br /> <asp:DropDownList  ID="ddlCon" runat="server" AppendDataBoundItems="true">
              
             </asp:DropDownList> <asp:Label runat="server" ID="errorCon" Text=""></asp:Label><br />
+        <asp:PlaceHolder  ID= "phCon" runat="server" /> <br />
 
-        <button>Add Another Control +</button> <!---TODO not functional--->
+        <asp:button ID="btnAddControl" runat="server" OnClick="btnAddControl_Click" Text="Add Another Control +"></asp:button> <!---TODO not functional--->
         <hr />
         <h2>Other Information</h2>
         <hr />

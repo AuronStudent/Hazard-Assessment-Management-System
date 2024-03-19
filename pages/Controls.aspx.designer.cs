@@ -24,6 +24,15 @@ namespace Hazard_Assessment_Management_System
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// NewControl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton NewControl;
+
+        /// <summary>
         /// hlHome control.
         /// </summary>
         /// <remarks>
@@ -85,15 +94,6 @@ namespace Hazard_Assessment_Management_System
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlControlCategories;
-
-        /// <summary>
-        /// NewControl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton NewControl;
 
         /// <summary>
         /// EditCategories control.

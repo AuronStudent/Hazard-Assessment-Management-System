@@ -11,7 +11,7 @@ namespace Hazard_Assessment_Management_System
 {
 
 
-    public partial class NewHazard
+    public partial class NewDept
     {
 
         /// <summary>
@@ -24,40 +24,31 @@ namespace Hazard_Assessment_Management_System
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// hazName control.
+        /// depName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox hazName;
+        protected global::System.Web.UI.WebControls.TextBox depName;
 
         /// <summary>
-        /// hazDesc control.
+        /// depDesc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox hazDesc;
+        protected global::System.Web.UI.WebControls.TextBox depDesc;
 
         /// <summary>
-        /// hazCate control.
+        /// makeNewDept control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList hazCate;
-
-        /// <summary>
-        /// makeNewHazard control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton makeNewHazard;
+        protected global::System.Web.UI.WebControls.LinkButton makeNewDept;
 
         /// <summary>
         /// cancelbtn control.
@@ -69,12 +60,12 @@ namespace Hazard_Assessment_Management_System
         protected global::System.Web.UI.WebControls.LinkButton cancelbtn;
 
         /// <summary>
-        /// confirmHazard control.
+        /// confirmDep control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label confirmHazard;
+        protected global::System.Web.UI.WebControls.Label confirmDep;
     }
 }

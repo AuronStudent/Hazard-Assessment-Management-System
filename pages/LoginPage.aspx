@@ -13,9 +13,9 @@
         <div>
             <center>
                 <h3>Username</h3><br />
-                <asp:TextBox ID="username" runat="server"  /> <br />
+                <asp:TextBox ID="username" runat="server" style="width:40%;"  /> <br />
                 <h3>Password</h3><br />
-                <asp:TextBox ID="password" runat="server"  /> <br /><br />
+                <asp:TextBox type="password" ID="password" runat="server" style="width:40%;" /> <br /><br />
                  <asp:LinkButton ID="LoginForm" class="formButton" runat="server" OnClick="LoginForm_Click">Login</asp:LinkButton><br /><br />
                 <asp:Label style="color:red" runat="server" ID="loginError" Text=""></asp:Label>
             </center>

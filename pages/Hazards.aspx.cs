@@ -36,6 +36,8 @@ namespace Hazard_Assessment_Management_System
                 ddlHazardCategories.DataValueField = "Hazard_Cat_ID";
                 ddlHazardCategories.DataBind();
             }
+            ddlHazardCategories.Items.Insert(0, new ListItem("<Select Hazard Category>", "0"));
+
         }
 
         protected void ddlHazardCategories_SelectedIndexChanged(object sender, EventArgs e)

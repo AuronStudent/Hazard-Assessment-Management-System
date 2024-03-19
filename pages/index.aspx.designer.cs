@@ -24,6 +24,15 @@ namespace Hazard_Assessment_Management_System
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// hlNewForm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlNewForm;
+
+        /// <summary>
         /// hlHome control.
         /// </summary>
         /// <remarks>
@@ -78,13 +87,49 @@ namespace Hazard_Assessment_Management_System
         protected global::System.Web.UI.WebControls.HyperLink hlLogout;
 
         /// <summary>
-        /// hlNewForm control.
+        /// SearchTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlNewForm;
+        protected global::System.Web.UI.WebControls.TextBox SearchTextBox;
+
+        /// <summary>
+        /// DropDownFilter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownFilter;
+
+        /// <summary>
+        /// srchBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button srchBtn;
+
+        /// <summary>
+        /// clearbtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button clearbtn;
+
+        /// <summary>
+        /// SearchResultsGrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView SearchResultsGrid;
 
         /// <summary>
         /// forms control.
