@@ -15,6 +15,14 @@ namespace Hazard_Assessment_Management_System
         SqlConnection myCon = new SqlConnection(ConfigurationManager.ConnectionStrings["HazardAssessmentDatabase"].ConnectionString);
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["username"] != null)
+            {
+                string username = Session["username"].ToString();
+            }
+            else
+            {
+                Response.Redirect("PleaseLogIn.aspx");
+            }
             if (!IsPostBack)
             {
                 

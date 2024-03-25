@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SpecificForm.aspx.cs" Inherits="Hazard_Assessment_Management_System.pages.SpecificForm" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SpecificFormGuest.aspx.cs" Inherits="Hazard_Assessment_Management_System.pages.SpecificFormGuest" %>
 
 <!DOCTYPE html>
 
@@ -7,7 +7,7 @@
 
     <title>Hazard Assessment Management System</title>
     
-    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="mainGuest.css" />
     
 
 </head>
@@ -20,27 +20,18 @@
 <h1>Hazard Assessment Management System</h1>
 </header>
    
-    <form id="form1" method="post" runat="server">
+    <form id="form1" runat="server">
         
             <%-- Navigation --%>
-            <div class="navContainer">
-            <div class="sidenav">
-                 <asp:HyperLink ID="hlHome" NavigateUrl="index.aspx" runat="server">All Forms</asp:HyperLink><br />
-                 <asp:HyperLink ID="hlHazards" NavigateUrl="Hazards.aspx" runat="server">Hazards</asp:HyperLink><br />
-                 <asp:HyperLink ID="hlControls" NavigateUrl="Controls.aspx" runat="server">Controls</asp:HyperLink><br />
-                 <asp:HyperLink ID="hlDepartments" NavigateUrl="Departments.aspx" runat="server">Departments</asp:HyperLink><br />
-                 
-                 <asp:HyperLink ID="hlLogout" NavigateUrl="LoginPage.aspx" runat="server">Logout</asp:HyperLink><br />
-            </div>
-            </div>
-            
+
+            <asp:HyperLink class="formButton" ID="hlNewForm" NavigateUrl="indexGuest1.aspx" runat="server" style="margin:10px;">Back</asp:HyperLink><br /><br />
                 <div class="formDiv">
 
                     <table class="formTable">
                         <tr>
                             <td>Assessment Performed By: </td>
                             <td>Date of Assessment</td>
-                            <td><asp:LinkButton class="formButton" ID="Edit" runat="server" Text="Review" OnClick="EditForm_Click"/></td>
+                            
                         </tr>
                         <tr>
                             <td><asp:TextBox ID="name" runat="server" ReadOnly="true" /></td>
@@ -49,7 +40,7 @@
                         <tr>
                             <td>Email: </td>
                             <td>Review Date</td>
-                            <td><asp:LinkButton class="formButton" ID="Delete" runat="server" Text="Delete" OnClick="DeleteForm_Click"/></td>
+                            
                         </tr>
                         <tr>
                             <td><asp:TextBox ID="email" runat="server"  ReadOnly="true"/></td>
@@ -90,3 +81,4 @@
     </form>
 </body>
 </html>
+

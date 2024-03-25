@@ -18,7 +18,7 @@
 <h1>Hazard Assessment Management System</h1>
 </header>
    
-    <form id="form1" runat="server">
+    <form id="form1" method="post" runat="server">
         
             <%-- Navigation --%>
             <div class="navContainer">
@@ -27,7 +27,7 @@
                  <asp:HyperLink ID="hlHazards" NavigateUrl="Hazards.aspx" runat="server">Hazards</asp:HyperLink><br />
                  <asp:HyperLink ID="hlControls" NavigateUrl="Controls.aspx" runat="server">Controls</asp:HyperLink><br />
                  <asp:HyperLink ID="hlDepartments" NavigateUrl="Departments.aspx" runat="server">Departments</asp:HyperLink><br />
-                 <asp:HyperLink ID="hlReports" NavigateUrl="Reports.aspx" runat="server">Report Making</asp:HyperLink><br />
+                 
                  <asp:HyperLink ID="hlLogout" NavigateUrl="LoginPage.aspx" runat="server">Logout</asp:HyperLink><br />
             </div>
             </div>
@@ -56,10 +56,12 @@
                          <tr>
                             <td>Job/Position/Work Type: </td>
                             <td>Reviewed By</td>
+                             <td>Department</td>
                         </tr>
                         <tr>
                             <td><asp:TextBox ID="jobite" runat="server"  /></td>
                             <td><asp:TextBox ID="reviewBy" runat="server"  /></td>
+                            <td><asp:TextBox ID="department" runat="server" ReadOnly="true" /></td>
                         </tr>
                     </table>
                     <br /><br />

@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Hazard_Assessment_Management_System.pages
+namespace Hazard_Assessment_Management_System
 {
 
 
-    public partial class LoginPage
+    public partial class indexGuest1
     {
 
         /// <summary>
@@ -24,48 +24,75 @@ namespace Hazard_Assessment_Management_System.pages
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// username control.
+        /// login control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox username;
+        protected global::System.Web.UI.WebControls.HyperLink login;
 
         /// <summary>
-        /// password control.
+        /// hlNewForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox password;
+        protected global::System.Web.UI.WebControls.HyperLink hlNewForm;
 
         /// <summary>
-        /// LoginForm control.
+        /// SearchTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LoginForm;
+        protected global::System.Web.UI.WebControls.TextBox SearchTextBox;
 
         /// <summary>
-        /// loginError control.
+        /// DropDownFilter control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label loginError;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownFilter;
 
         /// <summary>
-        /// GuestLogin control.
+        /// srchBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink GuestLogin;
+        protected global::System.Web.UI.WebControls.Button srchBtn;
+
+        /// <summary>
+        /// clearbtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button clearbtn;
+
+        /// <summary>
+        /// SearchResultsGrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView SearchResultsGrid;
+
+        /// <summary>
+        /// forms control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView forms;
     }
 }

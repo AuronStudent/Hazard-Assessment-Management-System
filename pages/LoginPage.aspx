@@ -17,7 +17,9 @@
                 <h3>Password</h3><br />
                 <asp:TextBox type="password" ID="password" runat="server" style="width:40%;" /> <br /><br />
                  <asp:LinkButton ID="LoginForm" class="formButton" runat="server" OnClick="LoginForm_Click">Login</asp:LinkButton><br /><br />
-                <asp:Label style="color:red" runat="server" ID="loginError" Text=""></asp:Label>
+                <asp:Label style="color:red" runat="server" ID="loginError" Text=""></asp:Label><br />
+                                <h3>Continue as Guest</h3><br />
+                <asp:HyperLink class="formButton" ID ="GuestLogin" runat="server" NavigateUrl="indexGuest1.aspx">Guest</asp:HyperLink>
             </center>
         </div>
     </form>

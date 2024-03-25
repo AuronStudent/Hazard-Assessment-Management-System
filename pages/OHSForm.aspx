@@ -32,19 +32,41 @@
         <asp:button ID="btnAddTask" runat="server" OnClick="btnAddTask_Click" Text="Add Another Task "></asp:button> <!---TODO not functional--->
         <hr />
         <h2>Hazard Information</h2>
+        
         <hr />
-Hazard Category <br />
+        <h2>Task 1</h2>
+        Hazard Category <br />
         <asp:DropDownList ID="ddlCatHaz" runat="server" AppendDataBoundItems="true" > </asp:DropDownList> <br />
          Hazard <br /> <asp:DropDownList ID="ddlHaz" runat="server" AppendDataBoundItems="true">
              
             </asp:DropDownList> <asp:Label runat="server" ID="errorHaz" Text=""></asp:Label><br />
 
-        Risk <br />
-        Likelihood   <asp:TextBox ID="like" runat="server"  />  <br />
-        Severity     <asp:TextBox ID="sev" runat="server"  />  <br />
-        Frequency     <asp:TextBox ID="freq" runat="server"  /> <br />
+        Risk <br /><br />
+        Likelihood   <asp:RadioButtonList ID="likeGroup0" runat="server" RepeatDirection="Horizontal" CellPadding="20">
+                     <asp:ListItem Text="1" Value="1" />
+                     <asp:ListItem Text="2" Value="2" />
+                    <asp:ListItem Text="3" Value="3" />
+                     </asp:RadioButtonList><br />
+        
+        
+        Severity     <asp:RadioButtonList ID="sevGroup0" runat="server" RepeatDirection="Horizontal" CellPadding="20">
+                     <asp:ListItem Text="1" Value="1" />
+                     <asp:ListItem Text="2" Value="2" />
+                    <asp:ListItem Text="3" Value="3" />
+                     </asp:RadioButtonList><br />
+
+        Frequency    <asp:RadioButtonList ID="freqGroup0" runat="server" RepeatDirection="Horizontal" CellPadding="20">
+                     <asp:ListItem Text="1" Value="1" />
+                     <asp:ListItem Text="2" Value="2" />
+                    <asp:ListItem Text="3" Value="3" />
+                     </asp:RadioButtonList><br />
+
+        <asp:button ID="btnAddHazard" runat="server" OnClick="btnAddHazard_Click" Text="Add Another Hazard +">   </asp:button><br /> <!---TODO not functional--->
+
+        <PlaceHolder ID="moreTasks" runat="server"></PlaceHolder>
+        
         <asp:PlaceHolder ID="phHaz" runat="server" /> <br />
-        <asp:button ID="btnAddHazard" runat="server" OnClick="btnAddHazard_Click" Text="Add Another Hazard ">   </asp:button><br /> <!---TODO not functional--->
+        
         <hr />
         <h2>Control Information</h2>
         <hr />
@@ -59,7 +81,7 @@ Hazard Category <br />
         <h2>Other Information</h2>
         <hr />
         Comments <br />
-        <textarea>comments</textarea><br /><br /> <!---TODO not functional--->
+        <asp:TextBox ID="comments" runat="server" TextMode="MultiLine"></asp:TextBox><br /><br /> <!---TODO not functional--->
 
          <asp:LinkButton ID="SubmitForm" class="formButton" runat="server" OnClick="SubmitForm_Click">Submit</asp:LinkButton><asp:LinkButton ID="Cancel" class="formButton" runat="server" OnClick="CancelForm_Click">Go Back</asp:LinkButton>
         <asp:Label runat="server" ID="formError" Text=""></asp:Label>

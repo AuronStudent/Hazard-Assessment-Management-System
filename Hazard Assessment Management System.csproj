@@ -71,6 +71,9 @@
     <Content Include="pages\Departments.aspx" />
     <Content Include="pages\EditDept.aspx" />
     <Content Include="pages\Hazards.aspx" />
+    <Content Include="pages\indexGuest1.aspx" />
+    <Content Include="pages\PleaseLogIn.aspx" />
+    <Content Include="pages\mainGuest.css" />
     <Content Include="pages\NewDept.aspx" />
     <Content Include="pages\newHazard.css" />
     <Content Include="pages\index.aspx" />
@@ -82,6 +85,7 @@
     <Content Include="pages\Reports.aspx" />
     <Content Include="pages\SpecificFormEdit.aspx" />
     <Content Include="pages\SpecificForm.aspx" />
+    <Content Include="pages\SpecificFormGuest.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +123,20 @@
     </Compile>
     <Compile Include="pages\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\indexGuest1.aspx.cs">
+      <DependentUpon>indexGuest1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\indexGuest1.aspx.designer.cs">
+      <DependentUpon>indexGuest1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\PleaseLogIn.aspx.cs">
+      <DependentUpon>PleaseLogIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\PleaseLogIn.aspx.designer.cs">
+      <DependentUpon>PleaseLogIn.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\LoginPage.aspx.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
@@ -175,6 +193,13 @@
     </Compile>
     <Compile Include="pages\SpecificForm.aspx.designer.cs">
       <DependentUpon>SpecificForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\SpecificFormGuest.aspx.cs">
+      <DependentUpon>SpecificFormGuest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\SpecificFormGuest.aspx.designer.cs">
+      <DependentUpon>SpecificFormGuest.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

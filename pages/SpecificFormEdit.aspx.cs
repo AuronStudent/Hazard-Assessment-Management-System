@@ -17,6 +17,14 @@ namespace Hazard_Assessment_Management_System.pages
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["HazardAssessmentDatabase"].ConnectionString);
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["username"] != null)
+            {
+                string username = Session["username"].ToString();
+            }
+            else
+            {
+                Response.Redirect("PleaseLogIn.aspx");
+            }
             if (!IsPostBack)
             {
                 LoadForm();
@@ -42,6 +50,7 @@ namespace Hazard_Assessment_Management_System.pages
                 string userEmail = "";
                 string aTask = "";
                 string hazId = "";
+                string depName = "";
                 // get everything on form at specifyed ID
                 int formId = Convert.ToInt32(Request.QueryString["id"]);
                 string query = "SELECT * from form where form_id=" + formId + ";";
@@ -154,6 +163,26 @@ namespace Hazard_Assessment_Management_System.pages
                         }
 
                     }
+                    query = "SELECT * from department where dep_id=" + depId + ";";
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+
+
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        if (reader.Read())
+                        {
+                            depName = reader["dep_name"].ToString();
+
+                            reader.Close();
+                        }
+                        else
+                        {
+                            reader.Close();
+
+                        }
+
+                    }
+
                     //asign all variable to the form boxes on the page
                     jobite.Text = jobType;
                     reviewDate.Text = revDate;
@@ -165,6 +194,7 @@ namespace Hazard_Assessment_Management_System.pages
                     task.Text = aTask;
                     hazards.Text = hazName;
                     controls.Text = conName;
+                    department.Text = depName;
 
                     //close connection
                     con.Close();

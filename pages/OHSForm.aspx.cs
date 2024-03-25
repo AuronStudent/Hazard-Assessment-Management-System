@@ -12,8 +12,10 @@ using System.Security.Cryptography;
 
 namespace Hazard_Assessment_Management_System
 {
+    
     public partial class OHSForm : System.Web.UI.Page
     {
+        int newId = 0;
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["HazardAssessmentDatabase"].ConnectionString);
 
 
@@ -30,12 +32,17 @@ namespace Hazard_Assessment_Management_System
 
                     for (int i = 0; i < controlCount; i++)
                     {
-
+                        int numTask = i + 2;
                         TextBox newTask = new TextBox();
                         newTask.ID = "task" + i.ToString();
                         phTask.Controls.Add(new LiteralControl("Task <br />"));
                         phTask.Controls.Add(newTask);
                         phTask.Controls.Add(new LiteralControl("<br />"));
+                        moreTasks.Controls.Add(new LiteralControl("<h2>Task " + numTask + " </h2>"));
+                        PlaceHolder tasks2 = new PlaceHolder();
+                        tasks2.ID = numTask.ToString();
+                        moreTasks.Controls.Add(tasks2);
+                        makeHazardRadioButtons(tasks2, i);
 
                     }
 
@@ -49,33 +56,7 @@ namespace Hazard_Assessment_Management_System
 
                         for (int i = 0; i < controlCount; i++)
                         {
-                            DropDownList newCatHaz = new DropDownList();
-                            newCatHaz.ID = "ddlCatHaz" + i.ToString();
-                            LoadHazardCategories(newCatHaz);
-
-                            DropDownList newHaz = new DropDownList();
-                            newHaz.ID = "ddlHaz" + i.ToString();
-                            LoadHazards(newHaz);
-
-                            TextBox newLikelyHood = new TextBox();
-                            newLikelyHood.ID = "Likelyhood" + i.ToString();
-
-                            TextBox newSeverity = new TextBox();
-                            newSeverity.ID = "Severity" + i.ToString();
-                            TextBox newFrequency = new TextBox();
-                            newFrequency.ID = "Frequency" + i.ToString();
-
-                            phHaz.Controls.Add(new LiteralControl("Hazard Category<br />"));
-                            phHaz.Controls.Add(newCatHaz);
-                            phHaz.Controls.Add(new LiteralControl("Hazard<br />"));
-                            phHaz.Controls.Add(newHaz);
-                            phHaz.Controls.Add(new LiteralControl("<br />Likelihood<br />"));
-                            phHaz.Controls.Add(newLikelyHood);
-                            phHaz.Controls.Add(new LiteralControl("<br />Severity<br />"));
-                            phHaz.Controls.Add(newSeverity);
-                            phHaz.Controls.Add(new LiteralControl("<br />Frequency<br />"));
-                            phHaz.Controls.Add(newFrequency);
-                            phHaz.Controls.Add(new LiteralControl("<br />"));
+                            //makeHazardRadioButtons(i);
 
                         }
                     }
@@ -259,11 +240,11 @@ namespace Hazard_Assessment_Management_System
                     SqlDataAdapter adapter = new SqlDataAdapter("SELECT Hazard_Cat_Name FROM HazardCategory", con);
                     adapter.Fill(hazardCategories);
 
-                    ddlCatHaz.DataSource = hazardCategories;
-                    ddlCatHaz.DataTextField = "Hazard_Cat_Name";
-                    ddlCatHaz.DataValueField = "Hazard_Cat_Name";
+                    ddl.DataSource = hazardCategories;
+                    ddl.DataTextField = "Hazard_Cat_Name";
+                    ddl.DataValueField = "Hazard_Cat_Name";
 
-                    ddlCatHaz.DataBind();
+                    ddl.DataBind();
                 }
                 catch (Exception ex)
                 {
@@ -275,104 +256,112 @@ namespace Hazard_Assessment_Management_System
 
             // Add the initial item - you can add this even if the options from the
             // db were not successfully loaded
-            ddlCatHaz.Items.Insert(0, new ListItem("<Select Hazard Category>", "0"));
+            ddl.Items.Insert(0, new ListItem("<Select Hazard Category>", "0"));
             con.Close();
         }
         protected void SubmitForm_Click(object sender, EventArgs e)
         {
-            string formIDString = "";
-            int formID = 0; //ID of the form
-            //getting the current date and review date
-            int currentYear = DateTime.Now.Year;
-            int currentMonth = DateTime.Now.Month;
-            int currentDay = DateTime.Now.Day;
-            int reviewYear = currentYear + 1; // added one to review year
-            //setting both dates into one string
-            string reviewDate = currentMonth.ToString() + "/" + currentDay.ToString() + "/" + reviewYear.ToString();
-            string filledOutDate = currentMonth.ToString() + "/" + currentDay.ToString() + "/" + currentYear.ToString();
-            //getting total risk
-            int riskTotal = Int32.Parse(like.Text) + Int32.Parse(sev.Text) + Int32.Parse(freq.Text);
             try
             {
-                con.Open(); //open connection
-
-                string query = "insert into Form values(" + ddlDep.SelectedValue + ",'" + jobsite.Text + "','" + reviewDate + "','" + legalName.Text + "','" + filledOutDate + "',null,null,0," + riskTotal + ",'" + email.Text + "');"; //sql query string
-                SqlCommand myCom = new SqlCommand(query, con); // put sql string into an sql command
-                myCom.ExecuteNonQuery(); // execute the command and insert data into databse
-
-                //This is to get the ID of the form we just inserted. if everything goes good, the other foreign key tables should be in sync with this one
-                query = "SELECT TOP 1 form_id FROM form ORDER BY form_id DESC;";
-                myCom = new SqlCommand(query, con);
-
-                SqlDataReader reader = myCom.ExecuteReader();
-                if (reader.Read())
+                string formIDString = "";
+                int formID = 0; //ID of the form
+                                //getting the current date and review date
+                int currentYear = DateTime.Now.Year;
+                int currentMonth = DateTime.Now.Month;
+                int currentDay = DateTime.Now.Day;
+                int reviewYear = currentYear + 1; // added one to review year
+                                                  //setting both dates into one string
+                string reviewDate = currentMonth.ToString() + "/" + currentDay.ToString() + "/" + reviewYear.ToString();
+                string filledOutDate = currentMonth.ToString() + "/" + currentDay.ToString() + "/" + currentYear.ToString();
+                //getting total risk
+                int riskTotal = Int32.Parse(likeGroup0.SelectedValue) + Int32.Parse(sevGroup0.SelectedValue) + Int32.Parse(freqGroup0.SelectedValue);
+                try
                 {
-                    //read the formID
-                    formIDString = reader["form_ID"].ToString();
-                    reader.Close();
-                }
-                else
-                {
-                    reader.Close();
-                }
-                formID = Int32.Parse(formIDString);
-                query = "insert into FormControl values(" + ddlCon.SelectedValue + "," + formID + ");";
-                myCom = new SqlCommand(query, con);
-                myCom.ExecuteNonQuery();
+                    con.Open(); //open connection
 
-                query = "insert into FormHazard values(" + ddlHaz.SelectedValue + "," + formID + ");";
-                myCom = new SqlCommand(query, con);
-                myCom.ExecuteNonQuery();
+                    string query = "insert into Form values(" + ddlDep.SelectedValue + ",'" + jobsite.Text + "','" + reviewDate + "','" + legalName.Text + "','" + filledOutDate + "',null,null,0," + riskTotal + ",'" + email.Text + "','" + comments.Text + "');"; //sql query string
+                    SqlCommand myCom = new SqlCommand(query, con); // put sql string into an sql command
+                    myCom.ExecuteNonQuery(); // execute the command and insert data into databse
 
-                query = "insert into FormTask values(" + formID + "," + ddlHaz.SelectedValue + ",'" + task.Text + "');";
-                myCom = new SqlCommand(query, con);
-                myCom.ExecuteNonQuery();
-                if (ViewState["ControlCount"]!=null) {
-                
-                for (int i = 0; i < (int)ViewState["ControlCount"]; i++)
-                {
+                    //This is to get the ID of the form we just inserted. if everything goes good, the other foreign key tables should be in sync with this one
+                    query = "SELECT TOP 1 form_id FROM form ORDER BY form_id DESC;";
+                    myCom = new SqlCommand(query, con);
 
-                    TextBox task = (TextBox)phTask.FindControl("task" + i.ToString());
-                    if (task != null)
+                    SqlDataReader reader = myCom.ExecuteReader();
+                    if (reader.Read())
                     {
-                        //EACH TASK MUST HAVE AT LEAST ONE HAZARD AND EACH HAZARD HAS AT LEAST ONE CONTROL
-
-                        query = "insert into FormControl values(" + ddlCon.SelectedValue + "," + formID + ");";
-                        myCom = new SqlCommand(query, con);
-                        myCom.ExecuteNonQuery();
-                        
-                        query = "insert into FormHazard values(" + ddlHaz.SelectedValue + "," + formID + ");";
-                        myCom = new SqlCommand(query, con);
-                        myCom.ExecuteNonQuery();
-
-                        query = "insert into FormTask values(" + formID + "," + ddlHaz.SelectedValue + ",'" + task.Text + "');";
-                        myCom = new SqlCommand(query, con);
-                        myCom.ExecuteNonQuery();
+                        //read the formID
+                        formIDString = reader["form_ID"].ToString();
+                        reader.Close();
                     }
-                }
-                }
-                con.Close();
-            }
-            catch (Exception ex)
-            {
-                //error handling
-                formError.Text = ex.Message;
-            }
-            finally
-            {
-                //set all values back to nothing to prevent postback errors.
-                ddlDep.SelectedIndex = 0;
-                jobsite.Text = "";
-                legalName.Text = "";
-                email.Text = "";
-                like.Text = "";
-                sev.Text = "";
-                freq.Text = "";
-                task.Text = "";
-                ddlCon.SelectedIndex = 0;
-                ddlHaz.SelectedIndex = 0;
-            }
+                    else
+                    {
+                        reader.Close();
+                    }
+                    formID = Int32.Parse(formIDString);
+                    query = "insert into FormControl values(" + ddlCon.SelectedValue + "," + formID + ");";
+                    myCom = new SqlCommand(query, con);
+                    myCom.ExecuteNonQuery();
 
+                    query = "insert into FormHazard values(" + ddlHaz.SelectedValue + "," + formID + ");";
+                    myCom = new SqlCommand(query, con);
+                    myCom.ExecuteNonQuery();
+
+                    query = "insert into FormTask values(" + formID + "," + ddlHaz.SelectedValue + ",'" + task.Text + "');";
+                    myCom = new SqlCommand(query, con);
+                    myCom.ExecuteNonQuery();
+                    if (ViewState["ControlCount"] != null)
+                    {
+
+                        for (int i = 0; i < (int)ViewState["ControlCount"]; i++)
+                        {
+
+                            TextBox task = (TextBox)phTask.FindControl("task" + i.ToString());
+                            if (task != null)
+                            {
+                                //EACH TASK MUST HAVE AT LEAST ONE HAZARD AND EACH HAZARD HAS AT LEAST ONE CONTROL
+
+                                query = "insert into FormControl values(" + ddlCon.SelectedValue + "," + formID + ");";
+                                myCom = new SqlCommand(query, con);
+                                myCom.ExecuteNonQuery();
+
+                                query = "insert into FormHazard values(" + ddlHaz.SelectedValue + "," + formID + ");";
+                                myCom = new SqlCommand(query, con);
+                                myCom.ExecuteNonQuery();
+
+                                query = "insert into FormTask values(" + formID + "," + ddlHaz.SelectedValue + ",'" + task.Text + "');";
+                                myCom = new SqlCommand(query, con);
+                                myCom.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                    con.Close();
+                }
+                catch (Exception ex)
+                {
+                    //error handling
+                    formError.Text = ex.Message;
+                }
+                finally
+                {
+                    //set all values back to nothing to prevent postback errors.
+                    ddlDep.SelectedIndex = 0;
+                    jobsite.Text = "";
+                    legalName.Text = "";
+                    email.Text = "";
+                    likeGroup0.SelectedValue = "1";
+                    sevGroup0.SelectedValue = "1";
+                    freqGroup0.SelectedValue = "1";
+                    task.Text = "";
+                    ddlCon.SelectedIndex = 0;
+                    ddlHaz.SelectedIndex = 0;
+                    comments.Text = "";
+                    formError.Text = "";
+                }
+            }catch (Exception ex)
+            {
+                formError.Text = "Please fill out all fields!";
+            }
 
         }
         protected void btnAddTask_Click(object sender, EventArgs e) //add task button
@@ -386,7 +375,7 @@ namespace Hazard_Assessment_Management_System
             int controlCount = ViewState["ControlCount"] != null ? int.Parse(ViewState["ControlCount"].ToString()) : 0;
             controlCount++;
             ViewState["ControlCount"] = controlCount;
-
+            int taskNum = controlCount +1;
 
             TextBox newTask = new TextBox();
             newTask.ID = "task" + (controlCount - 1).ToString();
@@ -394,6 +383,11 @@ namespace Hazard_Assessment_Management_System
             phTask.Controls.Add(new LiteralControl("Task <br />"));
             phTask.Controls.Add(newTask);
             phTask.Controls.Add(new LiteralControl("<br />"));
+            moreTasks.Controls.Add(new LiteralControl("<h2>Task "+taskNum+" </h2>"));
+            PlaceHolder tasks2 = new PlaceHolder();
+            tasks2.ID =taskNum.ToString();
+            moreTasks.Controls.Add(tasks2);
+            makeHazardSection(tasks2);
 
         }
         private void LoadDepartments(DropDownList ddl)
@@ -450,25 +444,33 @@ namespace Hazard_Assessment_Management_System
             phHaz.Controls.Add(new LiteralControl("Hazard<br />")); //add hazard label
             phHaz.Controls.Add(newHaz); //add hazard dropdown
 
+            newId = newId +1 ;
 
-            TextBox newLikelyHood = new TextBox();
-            newLikelyHood.ID = "like" + phHaz.Controls.OfType<TextBox>().Count().ToString();
+            RadioButtonList newLikelyHood = new RadioButtonList();
+            newLikelyHood.ID = "likeGroup" + newId;
+            newLikelyHood.Items.Add(new ListItem("1", "1"));
+            newLikelyHood.Items.Add(new ListItem("2", "2"));
+            newLikelyHood.Items.Add(new ListItem("3", "3"));
             phHaz.Controls.Add(new LiteralControl("<br />Likelyhood <br />"));
             phHaz.Controls.Add(newLikelyHood);
 
-            TextBox newSeverity = new TextBox();
-            newSeverity.ID = "sev" + phHaz.Controls.OfType<TextBox>().Count().ToString();
-            newSeverity.Text = sev.Text;
+            RadioButtonList newSeverity = new RadioButtonList();
+            newSeverity.ID = "sevGroup" + newId;
+            newSeverity.Items.Add(new ListItem("1", "1"));
+            newSeverity.Items.Add(new ListItem("2", "2"));
+            newSeverity.Items.Add(new ListItem("3", "3"));
             phHaz.Controls.Add(new LiteralControl("<br />Severity <br />"));
             phHaz.Controls.Add(newSeverity);
 
-            TextBox newFrequency = new TextBox();
-            newFrequency.ID = "freq" + phTask.Controls.OfType<TextBox>().Count().ToString();
-            newFrequency.Text = freq.Text;
+            RadioButtonList newFrequency = new RadioButtonList();
+            newFrequency.ID = "freqGroup" + newId;
+            newFrequency.Items.Add(new ListItem("1", "1"));
+            newFrequency.Items.Add(new ListItem("2", "2"));
+            newFrequency.Items.Add(new ListItem("3", "3"));
             phHaz.Controls.Add(new LiteralControl("<br />Frequency <br />"));
             phHaz.Controls.Add(newFrequency);
             phHaz.Controls.Add(new LiteralControl("<br />"));
-            ViewState["ControlCounts"] = phHaz.Controls.OfType<DropDownList>().Count().ToString();
+            ViewState["ControlCounts"] = newId;
 
 
         }
@@ -489,8 +491,15 @@ namespace Hazard_Assessment_Management_System
         }
         protected void CancelForm_Click(object sender, EventArgs e)
         {
-            //cancel button brings user back to home screen
-            Response.Redirect("index.aspx");
+            if (Session["username"] == null)
+            {
+                Response.Redirect("indexGuest1.aspx");
+            }
+            else
+            {
+                //cancel button brings user back to home screen
+                Response.Redirect("index.aspx");
+            }
         }
         private void LoadHazards(DropDownList ddlHaz)
         {
@@ -561,5 +570,119 @@ namespace Hazard_Assessment_Management_System
             ddlCon.Items.Insert(0, new ListItem("<Select Control>", "0"));
             con.Close();
         }
+        private void makeHazardRadioButtons(PlaceHolder a, int index) 
+        {
+
+            DropDownList newCatHaz = new DropDownList();
+            newCatHaz.ID = "ddlCatHaz" + index.ToString();
+            LoadHazardCategories(newCatHaz);
+
+            DropDownList newHaz = new DropDownList();
+            newHaz.ID = "ddlHaz" + index.ToString();
+            LoadHazards(newHaz);
+            int taskNum = index + 2;
+            RadioButtonList newLikelyHood = new RadioButtonList();
+            newLikelyHood.ID = "likeGroup" + taskNum.ToString();
+            newLikelyHood.RepeatDirection = RepeatDirection.Horizontal;
+            newLikelyHood.CellPadding = 20;
+            newLikelyHood.Items.Add(new ListItem("1", "1"));
+            newLikelyHood.Items.Add(new ListItem("2", "2"));
+            newLikelyHood.Items.Add(new ListItem("3", "3"));
+
+            RadioButtonList newSeverity = new RadioButtonList();
+            newSeverity.ID = "sevGroup" + taskNum.ToString();
+            newSeverity.RepeatDirection = RepeatDirection.Horizontal;
+            newSeverity.CellPadding = 20;
+            newSeverity.Items.Add(new ListItem("1", "1"));
+            newSeverity.Items.Add(new ListItem("2", "2"));
+            newSeverity.Items.Add(new ListItem("3", "3"));
+
+            RadioButtonList newFrequency = new RadioButtonList();
+            newFrequency.ID = "freqGroup" + taskNum.ToString();
+            newFrequency.RepeatDirection = RepeatDirection.Horizontal;
+            newFrequency.CellPadding = 20;
+            newFrequency.Items.Add(new ListItem("1", "1"));
+            newFrequency.Items.Add(new ListItem("2", "2"));
+            newFrequency.Items.Add(new ListItem("3", "3"));
+
+            a.Controls.Add(new LiteralControl("Hazard Category<br />"));
+            a.Controls.Add(newCatHaz);
+            a.Controls.Add(new LiteralControl("<br />Hazard<br />"));
+            a.Controls.Add(newHaz);
+            a.Controls.Add(new LiteralControl("<br />Likelihood"));
+            a.Controls.Add(newLikelyHood);
+            a.Controls.Add(new LiteralControl("<br />Severity"));
+            a.Controls.Add(newSeverity);
+            a.Controls.Add(new LiteralControl("<br />Frequency"));
+            a.Controls.Add(newFrequency);
+            a.Controls.Add(new LiteralControl("<br />"));
+            Button hazardButton = new Button();
+            hazardButton.ID = "btnAddHazard" + taskNum;
+            hazardButton.Text = "Add Another Hazard +";
+            hazardButton.OnClientClick = "btnAddHazard_Click";
+            a.Controls.Add(hazardButton);
+            a.Controls.Add(new LiteralControl("<br />"));
+        }
+        private void makeHazardSection(PlaceHolder a)
+        {
+            DropDownList newCatHaz = new DropDownList(); //create a new dropdown
+            newCatHaz.ID = "ddlCatHaz" + a.Controls.OfType<DropDownList>().Count().ToString(); // set the id of the dropdown to the number of dropdowns in the placeholder
+            LoadHazardCategories(newCatHaz); //load hazard categories into the dropdown
+            a.Controls.Add(new LiteralControl("<br />")); //add a line break
+            a.Controls.Add(new LiteralControl("Hazard Category<br />")); //add hazard category label
+            a.Controls.Add(newCatHaz); //add hazard category dropdown
+
+            DropDownList newHaz = new DropDownList(); //create a new dropdown
+            newHaz.ID = "ddlHaz" + a.Controls.OfType<DropDownList>().Count().ToString(); //set the id of the dropdown to the number of dropdowns in the placeholder
+            LoadHazards(newHaz); //load hazards into the dropdown
+            a.Controls.Add(new LiteralControl("<br />")); // add a line break
+            a.Controls.Add(new LiteralControl("Hazard<br />")); //add hazard label
+            a.Controls.Add(newHaz); //add hazard dropdown
+
+            newId = newId + 1;
+
+            RadioButtonList newLikelyHood = new RadioButtonList();
+            newLikelyHood.ID = "likeGroup" + newId;
+            newLikelyHood.RepeatDirection = RepeatDirection.Horizontal;
+            newLikelyHood.CellPadding = 20;
+            newLikelyHood.Items.Add(new ListItem("1", "1"));
+            newLikelyHood.Items.Add(new ListItem("2", "2"));
+            newLikelyHood.Items.Add(new ListItem("3", "3"));
+            a.Controls.Add(new LiteralControl("<br />Likelyhood"));
+            a.Controls.Add(newLikelyHood);
+
+            RadioButtonList newSeverity = new RadioButtonList();
+            newSeverity.ID = "sevGroup" + newId;
+            newSeverity.RepeatDirection = RepeatDirection.Horizontal;
+            newSeverity.CellPadding = 20;
+            newSeverity.Items.Add(new ListItem("1", "1"));
+            newSeverity.Items.Add(new ListItem("2", "2"));
+            newSeverity.Items.Add(new ListItem("3", "3"));
+            a.Controls.Add(new LiteralControl("<br />Severity"));
+                a.Controls.Add(newSeverity);
+
+            RadioButtonList newFrequency = new RadioButtonList();
+            newFrequency.ID = "freqGroup" + newId;
+            newFrequency.RepeatDirection = RepeatDirection.Horizontal;
+            newFrequency.CellPadding = 20;
+            newFrequency.Items.Add(new ListItem("1", "1"));
+            newFrequency.Items.Add(new ListItem("2", "2"));
+            newFrequency.Items.Add(new ListItem("3", "3"));
+            a.Controls.Add(new LiteralControl("<br />Frequency"));
+                    a.Controls.Add(newFrequency);
+            a.Controls.Add(new LiteralControl("<br />"));
+
+            Button hazardButton = new Button();
+            hazardButton.ID = "btnAddHazard" + newId;
+            hazardButton.Text = "Add Another Hazard +";
+            hazardButton.OnClientClick = "btnAddHazard_Click";
+            a.Controls.Add(hazardButton);
+            a.Controls.Add(new LiteralControl("<br />"));
+
+            ViewState["ControlCounts"] = newId;
+        }
+        
+
+        
     }
 }

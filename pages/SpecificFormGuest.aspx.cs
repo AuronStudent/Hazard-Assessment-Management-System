@@ -1,6 +1,7 @@
 ﻿using Microsoft.SqlServer.Server;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -12,19 +13,11 @@ using System.Web.UI.WebControls;
 
 namespace Hazard_Assessment_Management_System.pages
 {
-    public partial class SpecificForm : System.Web.UI.Page
+    public partial class SpecificFormGuest : System.Web.UI.Page
     {
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["HazardAssessmentDatabase"].ConnectionString);
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["username"] != null)
-            {
-                string username = Session["username"].ToString();
-            }
-            else
-            {
-                Response.Redirect("LoginPage.aspx");
-            }
             if (!IsPostBack)
             {
                 LoadForm();
@@ -161,27 +154,27 @@ namespace Hazard_Assessment_Management_System.pages
                             reader.Close();
 
                         }
+
                     }
-                        query = "SELECT * from department where dep_id=" + depId + ";";
-                        using (SqlCommand cmd = new SqlCommand(query, con))
+                    query = "SELECT * from department where dep_id=" + depId + ";";
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+
+
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        if (reader.Read())
                         {
+                            depName = reader["dep_name"].ToString();
 
-
-                            SqlDataReader reader = cmd.ExecuteReader();
-                            if (reader.Read())
-                            {
-                                depName = reader["dep_name"].ToString();
-                                
-                                reader.Close();
-                            }
-                            else
-                            {
-                                reader.Close();
-
-                            }
+                            reader.Close();
+                        }
+                        else
+                        {
+                            reader.Close();
 
                         }
-                    
+
+                    }
                     //asign all variable to the form boxes on the page
                     jobite.Text = jobType;
                     reviewDate.Text = revDate;
@@ -205,38 +198,9 @@ namespace Hazard_Assessment_Management_System.pages
                 errorForm.Text = "error loading form data " + ex.Message;
             }
         }
-        protected void DeleteForm_Click(object sender, EventArgs e)
-        {
-            con.Open();
-            int formId = Convert.ToInt32(Request.QueryString["id"]);
-            //TODO add confirmation?
-            //delete task from the form
-            string query = "Delete from formtask where form_id="+formId + ";";
-            SqlCommand cmd = new SqlCommand(query, con);
-            cmd.ExecuteNonQuery();
-            // deelte the control form that form
-            query = "delete from formcontrol where form_id="+formId+ ";";
-            cmd = new SqlCommand(query, con);
-            cmd.ExecuteNonQuery();
-            //delete the hazards from that form
-            query = "delete from formhazard where form_id=" + formId + ";";
-            cmd = new SqlCommand(query, con);
-            cmd.ExecuteNonQuery();
-            //delete the form itself
-            query = "delete from form where form_id=" + formId + ";";
-            cmd = new SqlCommand(query, con);
-            cmd.ExecuteNonQuery();
-            //It is done in this order to prevent foreign keys from preventing data deletion.
 
-            con.Close();
-            //redirect once done
-            Response.Redirect("index.aspx");
-        }
-        protected void EditForm_Click(object sender, EventArgs e)
-        {
-            //get id and redirect to edit page with id
-            string id = Request.QueryString["id"];
-            Response.Redirect("SpecificFormEdit.aspx?id="+id);
-        }
     }
 }
+
+
+

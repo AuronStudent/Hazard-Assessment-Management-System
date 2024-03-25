@@ -11,10 +11,11 @@ namespace Hazard_Assessment_Management_System.pages
 {
     public partial class LoginPage : System.Web.UI.Page
     {
+       
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["HazardAssessmentDatabase"].ConnectionString);
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Session["username"] = null;
         }
         protected void LoginForm_Click(object sender, EventArgs e)
         {
@@ -41,17 +42,24 @@ namespace Hazard_Assessment_Management_System.pages
                     reader.Close();
                 }
                 //compare username and password to each other. it wont work if one is incorrect
-                if((user == username.Text)&&(pass == password.Text))
+                if ((username.Text == "") || (password.Text == ""))
                 {
+                    loginError.Text = "Please fill out all fields!";
+                }
+                else { 
+                if ((user == username.Text) && (pass == password.Text))
+                {
+                    Session["username"] = username.Text;
                     //successful login. redirect to index page.
                     Response.Redirect("index.aspx");
                 }
                 else
                 {
+                    password.Text = "";
                     //login failed. wrong username or password
                     loginError.Text = "Incorrect Username or Password";
                 }
-
+            }
             }catch(Exception ex)
             {
                 //login failed or connection failed

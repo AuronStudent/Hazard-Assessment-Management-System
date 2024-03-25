@@ -60,15 +60,6 @@ namespace Hazard_Assessment_Management_System.pages
         protected global::System.Web.UI.WebControls.HyperLink hlDepartments;
 
         /// <summary>
-        /// hlReports control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlReports;
-
-        /// <summary>
         /// hlLogout control.
         /// </summary>
         /// <remarks>
@@ -148,6 +139,15 @@ namespace Hazard_Assessment_Management_System.pages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox reviewBy;
+
+        /// <summary>
+        /// department control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox department;
 
         /// <summary>
         /// task control.

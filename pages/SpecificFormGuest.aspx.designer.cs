@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Hazard_Assessment_Management_System
+namespace Hazard_Assessment_Management_System.pages
 {
 
 
-    public partial class Departments
+    public partial class SpecificFormGuest
     {
 
         /// <summary>
@@ -24,138 +24,129 @@ namespace Hazard_Assessment_Management_System
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// HyperLink1 control.
+        /// hlNewForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
+        protected global::System.Web.UI.WebControls.HyperLink hlNewForm;
 
         /// <summary>
-        /// hlHazards control.
+        /// name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlHazards;
+        protected global::System.Web.UI.WebControls.TextBox name;
 
         /// <summary>
-        /// hlControls control.
+        /// dateOf control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlControls;
+        protected global::System.Web.UI.WebControls.TextBox dateOf;
 
         /// <summary>
-        /// hlDepartments control.
+        /// email control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlDepartments;
+        protected global::System.Web.UI.WebControls.TextBox email;
 
         /// <summary>
-        /// hlLogout control.
+        /// reviewDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlLogout;
+        protected global::System.Web.UI.WebControls.TextBox reviewDate;
 
         /// <summary>
-        /// dataContainer control.
+        /// jobite control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dataContainer;
+        protected global::System.Web.UI.WebControls.TextBox jobite;
 
         /// <summary>
-        /// errorLabel control.
+        /// reviewBy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label errorLabel;
+        protected global::System.Web.UI.WebControls.TextBox reviewBy;
 
         /// <summary>
-        /// newDeptTable control.
+        /// department control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl newDeptTable;
+        protected global::System.Web.UI.WebControls.TextBox department;
 
         /// <summary>
-        /// depName control.
+        /// task control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox depName;
+        protected global::System.Web.UI.WebControls.TextBox task;
 
         /// <summary>
-        /// depDesc control.
+        /// hazards control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox depDesc;
+        protected global::System.Web.UI.WebControls.TextBox hazards;
 
         /// <summary>
-        /// deptID control.
+        /// risk control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox deptID;
+        protected global::System.Web.UI.WebControls.TextBox risk;
 
         /// <summary>
-        /// makeNewDept control.
+        /// controls control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton makeNewDept;
+        protected global::System.Web.UI.WebControls.TextBox controls;
 
         /// <summary>
-        /// saveEdit control.
+        /// dateImp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton saveEdit;
+        protected global::System.Web.UI.WebControls.TextBox dateImp;
 
         /// <summary>
-        /// cancelbtn control.
+        /// errorForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton cancelbtn;
-
-        /// <summary>
-        /// confirmDep control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label confirmDep;
+        protected global::System.Web.UI.WebControls.Label errorForm;
     }
 }
