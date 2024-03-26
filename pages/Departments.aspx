@@ -36,8 +36,8 @@
             <asp:Label ID="errorLabel" runat="server" Text="" style="color:red;"></asp:Label>
         </div>
         
-        <div class="datatable" id="newDeptTable" runat="server" style="margin-left:1000px;">
-            <h2>Add New Department</h2>
+        <div class="datatable" id="newDeptTable" runat="server" style="margin-left:1150px;">
+            <asp:Label ID="addOrEdit" runat="server" Text="<h2>Add New Department</h2>" />
                 Department Name <asp:TextBox ID="depName" runat="server"  /> <br /> <br />
                 Department Description <asp:TextBox ID="depDesc" runat="server"  /> <br /> <br />
                 <asp:TextBox type="hidden" ID="deptID" name="deptID" value="" runat="server" />

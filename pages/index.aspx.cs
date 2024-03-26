@@ -139,6 +139,75 @@ namespace Hazard_Assessment_Management_System
             SearchResultsGrid.Visible = false;
             SearchTextBox.Text = "";
         }
+        protected void noreview(object sender, EventArgs e)
+        {
+            // Load forms data from the database with only the forms that are not reviewed
+            string query = "SELECT form_id, Job_Type, Name_Filled_Out, Date_Filled_Out, Reviewed_By_Name, Review_Date FROM form WHERE Reviewed_By_Name IS NULL;";
+
+            // Rebind the GridView with the newly loaded data
+            BindFormsData(query);
+        }
+
+
+        protected void rereview(object sender, EventArgs e)
+        {
+            try
+            {
+                // Calculate the date 3 years ago from today
+                DateTime threeYearsAgo = DateTime.Now.AddYears(-3);
+
+                // Construct the SQL query to select forms older than 3 years
+                string query = "SELECT form_id, Job_Type, Name_Filled_Out, Date_Filled_Out, Reviewed_By_Name, Review_Date FROM form WHERE Review_Date < @ThreeYearsAgo";
+
+                // Define the connection string and establish a connection
+                string connectionString = ConfigurationManager.ConnectionStrings["HazardAssessmentDatabase"].ConnectionString;
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    con.Open();
+
+                    // Create a SqlCommand object with the query and connection
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        // Add parameter for the three years ago date
+                        cmd.Parameters.AddWithValue("@ThreeYearsAgo", threeYearsAgo);
+
+                        // Execute the query and load the result into a DataTable
+                        SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                        DataTable dt = new DataTable();
+                        dt.Load(dr);
+
+                        // Bind the DataTable to the GridView
+                        forms.DataSource = dt;
+                        forms.DataBind();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions, such as displaying an error message
+                Console.WriteLine(ex);
+            }
+        }
+
+
+        private void BindFormsData(string query)
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["HazardAssessmentDatabase"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    con.Open();
+                    SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                    DataTable dt = new DataTable();
+                    dt.Load(dr); // Load datatable with values from the reader
+                    forms.DataSource = dt;
+                    forms.DataBind(); // Bind the data to the GridView
+                }
+            }
+        }
+
+
+
 
     }
 }

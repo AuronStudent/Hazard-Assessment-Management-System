@@ -96,6 +96,15 @@ namespace Hazard_Assessment_Management_System
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl newDeptTable;
 
         /// <summary>
+        /// addOrEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label addOrEdit;
+
+        /// <summary>
         /// depName control.
         /// </summary>
         /// <remarks>

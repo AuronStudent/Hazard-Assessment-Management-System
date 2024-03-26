@@ -21,6 +21,8 @@
     <form id="form1" method="post" runat="server">
        
                         <asp:HyperLink class="formButton" ID="hlNewForm" NavigateUrl="OHSForm.aspx" runat="server" style="margin-left:300px;">New Form</asp:HyperLink>
+                                <asp:Button class="formButton" ID="noreview1" onClick="noreview" runat="server" Text="Not Reviwed" />
+                        <asp:Button class="formButton" ID="rereview1" onClick="rereview" runat="server" Text="Re-Review" />
             <%-- Navigation --%>
             <div class="navContainer">
             <div class="sidenav">

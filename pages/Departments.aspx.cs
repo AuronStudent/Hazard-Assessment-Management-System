@@ -126,7 +126,7 @@ namespace Hazard_Assessment_Management_System
         }
         protected void btnEditDept_Click(int depID)
         {
-            
+            addOrEdit.Text = "<h2> Edit Department</h2>";
             newDeptTable.Visible = true;
             makeNewDept.Visible = false;
             saveEdit.Visible = true;
@@ -159,6 +159,7 @@ namespace Hazard_Assessment_Management_System
         protected void Cancel_Click(object sender, EventArgs e)
         {
             Response.Redirect("Departments.aspx");
+
         }
 
         protected void MakeNewDept_Click(object sender, EventArgs e)
@@ -215,8 +216,8 @@ namespace Hazard_Assessment_Management_System
             makeNewDept.Visible = true;
             depName.Text = "";
             depDesc.Text = "";
+            addOrEdit.Text = "<h2> Add New Department</h2>";
 
-           
             PopulateDataTable();
         }
     }

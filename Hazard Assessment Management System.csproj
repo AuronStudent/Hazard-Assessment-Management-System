@@ -69,12 +69,10 @@
   <ItemGroup>
     <Content Include="pages\Controls.aspx" />
     <Content Include="pages\Departments.aspx" />
-    <Content Include="pages\EditDept.aspx" />
     <Content Include="pages\Hazards.aspx" />
     <Content Include="pages\indexGuest1.aspx" />
     <Content Include="pages\PleaseLogIn.aspx" />
     <Content Include="pages\mainGuest.css" />
-    <Content Include="pages\NewDept.aspx" />
     <Content Include="pages\newHazard.css" />
     <Content Include="pages\index.aspx" />
     <Content Include="pages\LoginPage.aspx" />
@@ -102,13 +100,6 @@
     </Compile>
     <Compile Include="pages\Departments.aspx.designer.cs">
       <DependentUpon>Departments.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="pages\EditDept.aspx.cs">
-      <DependentUpon>EditDept.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\EditDept.aspx.designer.cs">
-      <DependentUpon>EditDept.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\Hazards.aspx.cs">
       <DependentUpon>Hazards.aspx</DependentUpon>
@@ -144,13 +135,6 @@
     </Compile>
     <Compile Include="pages\LoginPage.aspx.designer.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="pages\NewDept.aspx.cs">
-      <DependentUpon>NewDept.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\NewDept.aspx.designer.cs">
-      <DependentUpon>NewDept.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\NewHazard.aspx.cs">
       <DependentUpon>NewHazard.aspx</DependentUpon>
