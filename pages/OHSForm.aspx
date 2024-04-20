@@ -26,8 +26,8 @@
             </asp:DropDownList> <asp:Label runat="server" ID="errorDep" Text=""></asp:Label><br />
       
 
-        Job/Worksite/Work Type <br /><asp:TextBox ID="jobsite" runat="server"  /> <br /> 
-        Task <br /><asp:TextBox ID="task" runat="server"  /> <br /> 
+        Job/Worksite/Work Type  <asp:Button id="tooltipWorkType" Text="i" runat="server" ToolTip="Describes the place this hazard assessment is taken into effect" class="infoButton"/> <br /><asp:TextBox ID="jobsite" runat="server"  /> <br /> 
+        Task  <asp:Button id="tooltipTask" Text="i" runat="server" ToolTip="The task you are doing that needs to be assessed" class="infoButton"/><br /><asp:TextBox ID="task" runat="server"  /> <br /> 
         <asp:PlaceHolder ID="phTask" runat="server" /> <br />
         <asp:button ID="btnAddTask" runat="server" OnClick="btnAddTask_Click" Text="Add Another Task "></asp:button> <!---TODO not functional--->
         <hr />

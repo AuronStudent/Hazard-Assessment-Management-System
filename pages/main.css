@@ -201,4 +201,9 @@ textarea{
     width:500px;
     height:100px;
 }
+.infoButton{
+    border-radius:100px;
+        background-color: white;
+        color: blue;
+}
 

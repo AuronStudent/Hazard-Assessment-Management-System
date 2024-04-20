@@ -60,6 +60,15 @@ namespace Hazard_Assessment_Management_System
         protected global::System.Web.UI.WebControls.Label errorDep;
 
         /// <summary>
+        /// tooltipWorkType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button tooltipWorkType;
+
+        /// <summary>
         /// jobsite control.
         /// </summary>
         /// <remarks>
@@ -67,6 +76,15 @@ namespace Hazard_Assessment_Management_System
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox jobsite;
+
+        /// <summary>
+        /// tooltipTask control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button tooltipTask;
 
         /// <summary>
         /// task control.
