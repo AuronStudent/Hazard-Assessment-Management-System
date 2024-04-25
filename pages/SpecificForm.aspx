@@ -10,7 +10,22 @@
     <link rel="stylesheet" href="main.css" />
     
 
-</head>
+    <!-- Script to print the content of a div -->
+    <script> 
+        function printDiv() { 
+            var divContents = document.getElementById("formData").innerHTML; 
+            var a = window.open('', '', 'height=500, width=500'); 
+            a.document.write('<html><head><link rel="stylesheet" href="main.css" /></head>'); 
+            a.document.write('<body><div class=formTable>'); 
+            a.document.write(divContents); 
+            a.document.write('</div></body></html>'); 
+            a.document.close(); 
+            a.print(); 
+        } 
+    </script> 
+</head> 
+
+
 
 
 <body><%-- Webpage Heading --%>
@@ -34,13 +49,14 @@
             </div>
             </div>
             
-                <div class="formDiv">
+                <div class="formDiv" id="formData">
 
                     <table class="formTable">
                         <tr>
                             <td>Assessment Performed By: </td>
                             <td>Date of Assessment</td>
                             <td><asp:LinkButton class="formButton" ID="Edit" runat="server" Text="Review" OnClick="EditForm_Click"/></td>
+                            <td><input class="formButton" type="button" value="Print" onclick="printDiv()" /></td>
                         </tr>
                         <tr>
                             <td><asp:TextBox ID="name" runat="server" ReadOnly="true" /></td>
@@ -76,14 +92,17 @@
                             <th>Date Implemented</th>
                         </tr>
                         <tr>
-                            <td><asp:TextBox ID="task" runat="server" ReadOnly="true" /></td>
+                            
+                            <td><asp:TextBox ID="task" runat="server" ReadOnly="true"/></td>
                             <td><asp:TextBox ID="hazards" runat="server" ReadOnly="true"/></td>
                             <td><asp:TextBox ID="risk" runat="server" ReadOnly="true"/></td>
                             <td><asp:TextBox ID="controls" runat="server" ReadOnly="true"/></td>
                             <td><asp:TextBox ID="dateImp" runat="server" ReadOnly="true"/></td>
                         </tr>
+                        <placeholder ID="moreTHRCD" runat="server" />
 
                     </table>
+                           
                     <asp:Label runat="server" ID="errorForm" style="color:red;" Text=""></asp:Label>
                 </div>
        

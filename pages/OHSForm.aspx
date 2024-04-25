@@ -36,7 +36,7 @@
         <hr />
         <h2>Task 1</h2>
         Hazard Category <br />
-        <asp:DropDownList ID="ddlCatHaz" runat="server" AppendDataBoundItems="true" > </asp:DropDownList> <br />
+        <asp:DropDownList ID="ddlCatHaz" runat="server" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlCatHaz_SelectedIndexChanged" AutoPostBack="true"> </asp:DropDownList> <br />
          Hazard <br /> <asp:DropDownList ID="ddlHaz" runat="server" AppendDataBoundItems="true">
              
             </asp:DropDownList> <asp:Label runat="server" ID="errorHaz" Text=""></asp:Label><br />

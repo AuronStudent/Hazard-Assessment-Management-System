@@ -88,7 +88,7 @@ namespace Hazard_Assessment_Management_System
             {
 
                 LoadDepartments();
-                LoadHazards();
+                LoadHazards(0);
                 LoadControls();
                 LoadHazardCategories();
             }
@@ -128,7 +128,7 @@ namespace Hazard_Assessment_Management_System
             ddlDep.Items.Insert(0, new ListItem("<Select Department>", "0"));
             con.Close();
         }
-        private void LoadHazards()
+        private void LoadHazards(int category)
         {
 
             DataTable hazards = new DataTable();
@@ -138,7 +138,8 @@ namespace Hazard_Assessment_Management_System
 
                 try
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT Hazard_ID, Hazard_Name FROM dbo.Hazard", con);
+                    ddlHaz.Items.Clear();
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT Hazard_ID, Hazard_Name FROM dbo.Hazard where hazard_cat_id=" + category +";", con);
                     adapter.Fill(hazards);
 
                     ddlHaz.DataSource = hazards;
@@ -237,12 +238,12 @@ namespace Hazard_Assessment_Management_System
 
                 try
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT Hazard_Cat_Name FROM HazardCategory", con);
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT Hazard_Cat_Id, Hazard_Cat_Name FROM HazardCategory", con);
                     adapter.Fill(hazardCategories);
 
                     ddl.DataSource = hazardCategories;
                     ddl.DataTextField = "Hazard_Cat_Name";
-                    ddl.DataValueField = "Hazard_Cat_Name";
+                    ddl.DataValueField = "Hazard_Cat_Id";
 
                     ddl.DataBind();
                 }
@@ -432,6 +433,7 @@ namespace Hazard_Assessment_Management_System
 
             DropDownList newCatHaz = new DropDownList(); //create a new dropdown
             newCatHaz.ID = "ddlCatHaz" + phHaz.Controls.OfType<DropDownList>().Count().ToString(); // set the id of the dropdown to the number of dropdowns in the placeholder
+            
             LoadHazardCategories(newCatHaz); //load hazard categories into the dropdown
             phHaz.Controls.Add(new LiteralControl("<br />")); //add a line break
             phHaz.Controls.Add(new LiteralControl("Hazard Category<br />")); //add hazard category label
@@ -439,6 +441,8 @@ namespace Hazard_Assessment_Management_System
 
             DropDownList newHaz = new DropDownList(); //create a new dropdown
             newHaz.ID = "ddlHaz" + phHaz.Controls.OfType<DropDownList>().Count().ToString(); //set the id of the dropdown to the number of dropdowns in the placeholder
+            newHaz.AutoPostBack = true;
+            newHaz.SelectedIndexChanged += new EventHandler(this.ddlCatHaz_SelectedIndexChanged);
             LoadHazards(newHaz); //load hazards into the dropdown
             phHaz.Controls.Add(new LiteralControl("<br />")); // add a line break
             phHaz.Controls.Add(new LiteralControl("Hazard<br />")); //add hazard label
@@ -511,6 +515,7 @@ namespace Hazard_Assessment_Management_System
 
                 try
                 {
+                    ddlHaz.Items.Clear();
                     SqlDataAdapter adapter = new SqlDataAdapter("SELECT Hazard_ID, Hazard_Name FROM dbo.Hazard", con);
                     adapter.Fill(hazards);
 
@@ -579,6 +584,8 @@ namespace Hazard_Assessment_Management_System
 
             DropDownList newHaz = new DropDownList();
             newHaz.ID = "ddlHaz" + index.ToString();
+            newHaz.AutoPostBack = true;
+            newHaz.SelectedIndexChanged += new EventHandler(this.ddlCatHaz_SelectedIndexChanged);
             LoadHazards(newHaz);
             int taskNum = index + 2;
             RadioButtonList newLikelyHood = new RadioButtonList();
@@ -627,6 +634,7 @@ namespace Hazard_Assessment_Management_System
         {
             DropDownList newCatHaz = new DropDownList(); //create a new dropdown
             newCatHaz.ID = "ddlCatHaz" + a.Controls.OfType<DropDownList>().Count().ToString(); // set the id of the dropdown to the number of dropdowns in the placeholder
+
             LoadHazardCategories(newCatHaz); //load hazard categories into the dropdown
             a.Controls.Add(new LiteralControl("<br />")); //add a line break
             a.Controls.Add(new LiteralControl("Hazard Category<br />")); //add hazard category label
@@ -634,6 +642,8 @@ namespace Hazard_Assessment_Management_System
 
             DropDownList newHaz = new DropDownList(); //create a new dropdown
             newHaz.ID = "ddlHaz" + a.Controls.OfType<DropDownList>().Count().ToString(); //set the id of the dropdown to the number of dropdowns in the placeholder
+            newHaz.AutoPostBack = true;
+            newHaz.SelectedIndexChanged += new EventHandler(this.ddlCatHaz_SelectedIndexChanged);
             LoadHazards(newHaz); //load hazards into the dropdown
             a.Controls.Add(new LiteralControl("<br />")); // add a line break
             a.Controls.Add(new LiteralControl("Hazard<br />")); //add hazard label
@@ -681,8 +691,10 @@ namespace Hazard_Assessment_Management_System
 
             ViewState["ControlCounts"] = newId;
         }
-        
 
-        
+        protected void ddlCatHaz_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadHazards(ddlCatHaz.SelectedIndex);
+        }
     }
 }
