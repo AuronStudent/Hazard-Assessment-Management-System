@@ -70,10 +70,18 @@
         <hr />
         <h2>Control Information</h2>
         <hr />
-        
+                Contol Category <br />
+        <asp:DropDownList ID="ddlCatCon" runat="server" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlCatCon_SelectedIndexChanged" AutoPostBack="true"> </asp:DropDownList> <br />
             Control <br /> <asp:DropDownList  ID="ddlCon" runat="server" AppendDataBoundItems="true">
              
             </asp:DropDownList> <asp:Label runat="server" ID="errorCon" Text=""></asp:Label><br />
+                        Contol Category <br />
+
+        <asp:DropDownList ID="ddlCatCon2" runat="server" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlCatCon2_SelectedIndexChanged" AutoPostBack="true"> </asp:DropDownList> <br />
+            Control <br /> <asp:DropDownList  ID="ddlCon2" runat="server" AppendDataBoundItems="true">
+             
+            </asp:DropDownList> <asp:Label runat="server" ID="Label1" Text=""></asp:Label><br />
+
         <asp:PlaceHolder  ID= "phCon" runat="server" /> <br />
 
         <asp:button ID="btnAddControl" runat="server" OnClick="btnAddControl_Click" Text="Add Another Control +"></asp:button> <!---TODO not functional--->

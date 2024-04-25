@@ -195,6 +195,15 @@ namespace Hazard_Assessment_Management_System
         protected global::System.Web.UI.WebControls.PlaceHolder phHaz;
 
         /// <summary>
+        /// ddlCatCon control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCatCon;
+
+        /// <summary>
         /// ddlCon control.
         /// </summary>
         /// <remarks>
@@ -211,6 +220,33 @@ namespace Hazard_Assessment_Management_System
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label errorCon;
+
+        /// <summary>
+        /// ddlCatCon2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCatCon2;
+
+        /// <summary>
+        /// ddlCon2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCon2;
+
+        /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
         /// phCon control.

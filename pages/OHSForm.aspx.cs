@@ -12,7 +12,7 @@ using System.Security.Cryptography;
 
 namespace Hazard_Assessment_Management_System
 {
-    
+
     public partial class OHSForm : System.Web.UI.Page
     {
         int newId = 0;
@@ -89,8 +89,11 @@ namespace Hazard_Assessment_Management_System
 
                 LoadDepartments();
                 LoadHazards(0);
-                LoadControls();
+                LoadControls(0);
+                LoadControls2(0);
+                LoadControlCategories2();
                 LoadHazardCategories();
+                LoadControlCategories();
             }
 
         }
@@ -139,7 +142,7 @@ namespace Hazard_Assessment_Management_System
                 try
                 {
                     ddlHaz.Items.Clear();
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT Hazard_ID, Hazard_Name FROM dbo.Hazard where hazard_cat_id=" + category +";", con);
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT Hazard_ID, Hazard_Name FROM dbo.Hazard where hazard_cat_id=" + category + ";", con);
                     adapter.Fill(hazards);
 
                     ddlHaz.DataSource = hazards;
@@ -164,7 +167,7 @@ namespace Hazard_Assessment_Management_System
             con.Close();
 
         }
-        private void LoadControls()
+        private void LoadControls(int category)
         {
 
             DataTable controls = new DataTable();
@@ -174,7 +177,8 @@ namespace Hazard_Assessment_Management_System
 
                 try
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT Con_ID, Con_Name FROM dbo.Control", con);
+                    ddlCon.Items.Clear();
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT Con_ID, Con_Name FROM dbo.Control where con_cat_id="+category+";", con);
                     adapter.Fill(controls);
 
                     ddlCon.DataSource = controls;
@@ -303,6 +307,9 @@ namespace Hazard_Assessment_Management_System
                     query = "insert into FormControl values(" + ddlCon.SelectedValue + "," + formID + ");";
                     myCom = new SqlCommand(query, con);
                     myCom.ExecuteNonQuery();
+                    query = "insert into formControl values(" + ddlCon2.SelectedValue + "," + formID + ");";
+                    myCom = new SqlCommand(query, con);
+                    myCom.ExecuteNonQuery();
 
                     query = "insert into FormHazard values(" + ddlHaz.SelectedValue + "," + formID + ");";
                     myCom = new SqlCommand(query, con);
@@ -322,9 +329,9 @@ namespace Hazard_Assessment_Management_System
                             {
                                 //EACH TASK MUST HAVE AT LEAST ONE HAZARD AND EACH HAZARD HAS AT LEAST ONE CONTROL
 
-                                query = "insert into FormControl values(" + ddlCon.SelectedValue + "," + formID + ");";
-                                myCom = new SqlCommand(query, con);
-                                myCom.ExecuteNonQuery();
+//                                query = "insert into FormControl values(" + ddlCon.SelectedValue + "," + formID + ");";
+  //                              myCom = new SqlCommand(query, con);
+    //                            myCom.ExecuteNonQuery();
 
                                 query = "insert into FormHazard values(" + ddlHaz.SelectedValue + "," + formID + ");";
                                 myCom = new SqlCommand(query, con);
@@ -335,6 +342,7 @@ namespace Hazard_Assessment_Management_System
                                 myCom.ExecuteNonQuery();
                             }
                         }
+                        
                     }
                     con.Close();
                 }
@@ -359,7 +367,8 @@ namespace Hazard_Assessment_Management_System
                     comments.Text = "";
                     formError.Text = "";
                 }
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 formError.Text = "Please fill out all fields!";
             }
@@ -376,7 +385,7 @@ namespace Hazard_Assessment_Management_System
             int controlCount = ViewState["ControlCount"] != null ? int.Parse(ViewState["ControlCount"].ToString()) : 0;
             controlCount++;
             ViewState["ControlCount"] = controlCount;
-            int taskNum = controlCount +1;
+            int taskNum = controlCount + 1;
 
             TextBox newTask = new TextBox();
             newTask.ID = "task" + (controlCount - 1).ToString();
@@ -384,9 +393,9 @@ namespace Hazard_Assessment_Management_System
             phTask.Controls.Add(new LiteralControl("Task <br />"));
             phTask.Controls.Add(newTask);
             phTask.Controls.Add(new LiteralControl("<br />"));
-            moreTasks.Controls.Add(new LiteralControl("<h2>Task "+taskNum+" </h2>"));
+            moreTasks.Controls.Add(new LiteralControl("<h2>Task " + taskNum + " </h2>"));
             PlaceHolder tasks2 = new PlaceHolder();
-            tasks2.ID =taskNum.ToString();
+            tasks2.ID = taskNum.ToString();
             moreTasks.Controls.Add(tasks2);
             makeHazardSection(tasks2);
 
@@ -433,7 +442,7 @@ namespace Hazard_Assessment_Management_System
 
             DropDownList newCatHaz = new DropDownList(); //create a new dropdown
             newCatHaz.ID = "ddlCatHaz" + phHaz.Controls.OfType<DropDownList>().Count().ToString(); // set the id of the dropdown to the number of dropdowns in the placeholder
-            
+
             LoadHazardCategories(newCatHaz); //load hazard categories into the dropdown
             phHaz.Controls.Add(new LiteralControl("<br />")); //add a line break
             phHaz.Controls.Add(new LiteralControl("Hazard Category<br />")); //add hazard category label
@@ -448,7 +457,7 @@ namespace Hazard_Assessment_Management_System
             phHaz.Controls.Add(new LiteralControl("Hazard<br />")); //add hazard label
             phHaz.Controls.Add(newHaz); //add hazard dropdown
 
-            newId = newId +1 ;
+            newId = newId + 1;
 
             RadioButtonList newLikelyHood = new RadioButtonList();
             newLikelyHood.ID = "likeGroup" + newId;
@@ -575,7 +584,7 @@ namespace Hazard_Assessment_Management_System
             ddlCon.Items.Insert(0, new ListItem("<Select Control>", "0"));
             con.Close();
         }
-        private void makeHazardRadioButtons(PlaceHolder a, int index) 
+        private void makeHazardRadioButtons(PlaceHolder a, int index)
         {
 
             DropDownList newCatHaz = new DropDownList();
@@ -669,7 +678,7 @@ namespace Hazard_Assessment_Management_System
             newSeverity.Items.Add(new ListItem("2", "2"));
             newSeverity.Items.Add(new ListItem("3", "3"));
             a.Controls.Add(new LiteralControl("<br />Severity"));
-                a.Controls.Add(newSeverity);
+            a.Controls.Add(newSeverity);
 
             RadioButtonList newFrequency = new RadioButtonList();
             newFrequency.ID = "freqGroup" + newId;
@@ -679,7 +688,7 @@ namespace Hazard_Assessment_Management_System
             newFrequency.Items.Add(new ListItem("2", "2"));
             newFrequency.Items.Add(new ListItem("3", "3"));
             a.Controls.Add(new LiteralControl("<br />Frequency"));
-                    a.Controls.Add(newFrequency);
+            a.Controls.Add(newFrequency);
             a.Controls.Add(new LiteralControl("<br />"));
 
             Button hazardButton = new Button();
@@ -695,6 +704,105 @@ namespace Hazard_Assessment_Management_System
         protected void ddlCatHaz_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadHazards(ddlCatHaz.SelectedIndex);
+        }
+        protected void LoadControlCategories()
+        {
+            DataTable controlCategories = new DataTable();
+
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["HazardAssessmentDatabase"].ConnectionString))
+            {
+
+                try
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT Con_Cat_Name FROM ControlCategory", con);
+                    adapter.Fill(controlCategories);
+
+                    ddlCatCon.DataSource = controlCategories;
+                    ddlCatCon.DataTextField = "con_Cat_Name";
+                    ddlCatCon.DataValueField = "con_Cat_Name";
+
+                    ddlCatCon.DataBind();
+                }
+                catch (Exception ex)
+                {
+                    // Handle the error
+                    errorCon.Text = ex.Message;
+                }
+                ddlCatCon.Items.Insert(0, new ListItem("<Select Control Category>", "0"));
+                con.Close();
+            }
+        }
+        protected void ddlCatCon_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadControls(ddlCatCon.SelectedIndex);
+        }
+        protected void ddlCatCon2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadControls2(ddlCatCon2.SelectedIndex);
+        }
+
+
+        private void LoadControls2(int category)
+        {
+
+            DataTable controls = new DataTable();
+
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["HazardAssessmentDatabase"].ConnectionString))
+            {
+
+                try
+                {
+                    ddlCon2.Items.Clear();
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT Con_ID, Con_Name FROM dbo.Control where con_cat_id=" + category + ";", con);
+                    adapter.Fill(controls);
+
+                    ddlCon2.DataSource = controls;
+                    //same as above
+                    //TODO make it come from a category not from control
+                    ddlCon2.DataTextField = "Con_Name";
+                    //same as above
+                    ddlCon2.DataValueField = "Con_ID";
+                    ddlCon2.DataBind();
+                }
+                catch (Exception ex)
+                {
+                    // Handle the error
+                    errorCon.Text = ex.Message;
+                }
+
+            }
+
+            // Add the initial item - you can add this even if the options from the
+            // db were not successfully loaded
+            ddlCon2.Items.Insert(0, new ListItem("<Select Control>", "0"));
+            con.Close();
+        }
+        protected void LoadControlCategories2()
+        {
+            DataTable controlCategories = new DataTable();
+
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["HazardAssessmentDatabase"].ConnectionString))
+            {
+
+                try
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT Con_Cat_Name FROM ControlCategory", con);
+                    adapter.Fill(controlCategories);
+
+                    ddlCatCon2.DataSource = controlCategories;
+                    ddlCatCon2.DataTextField = "con_Cat_Name";
+                    ddlCatCon2.DataValueField = "con_Cat_Name";
+
+                    ddlCatCon2.DataBind();
+                }
+                catch (Exception ex)
+                {
+                    // Handle the error
+                    errorCon.Text = ex.Message;
+                }
+                ddlCatCon2.Items.Insert(0, new ListItem("<Select Control Category>", "0"));
+                con.Close();
+            }
         }
     }
 }
