@@ -593,8 +593,8 @@ namespace Hazard_Assessment_Management_System
 
             DropDownList newHaz = new DropDownList();
             newHaz.ID = "ddlHaz" + index.ToString();
-            newHaz.AutoPostBack = true;
-            newHaz.SelectedIndexChanged += new EventHandler(this.ddlCatHaz_SelectedIndexChanged);
+           // newHaz.AutoPostBack = true;
+           // newHaz.SelectedIndexChanged += new EventHandler(this.ddlCatHaz_SelectedIndexChanged);
             LoadHazards(newHaz);
             int taskNum = index + 2;
             RadioButtonList newLikelyHood = new RadioButtonList();
@@ -651,8 +651,8 @@ namespace Hazard_Assessment_Management_System
 
             DropDownList newHaz = new DropDownList(); //create a new dropdown
             newHaz.ID = "ddlHaz" + a.Controls.OfType<DropDownList>().Count().ToString(); //set the id of the dropdown to the number of dropdowns in the placeholder
-            newHaz.AutoPostBack = true;
-            newHaz.SelectedIndexChanged += new EventHandler(this.ddlCatHaz_SelectedIndexChanged);
+            //newHaz.AutoPostBack = true;
+            //newHaz.SelectedIndexChanged += new EventHandler(this.ddlCatHaz_SelectedIndexChanged);
             LoadHazards(newHaz); //load hazards into the dropdown
             a.Controls.Add(new LiteralControl("<br />")); // add a line break
             a.Controls.Add(new LiteralControl("Hazard<br />")); //add hazard label
